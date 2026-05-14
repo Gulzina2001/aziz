@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Часы Кыргызстана</title>
+
+  <style>
+    body{
+      margin:0;
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:#0f172a;
+      font-family:Arial, sans-serif;
+      overflow:hidden;
+    }
+
+    .card{
+      text-align:center;
+      padding:40px;
+      border-radius:25px;
+      background:rgba(255,255,255,0.08);
+      backdrop-filter:blur(10px);
+      box-shadow:
+        0 0 20px rgba(0,255,255,0.4),
+        0 0 60px rgba(0,255,255,0.2);
+      color:white;
+    }
+
+    .title{
+      font-size:32px;
+      margin-bottom:10px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      text-shadow:0 0 15px cyan;
+    }
+
+    .flag{
+      font-size:40px;
+    }
+
+    .city{
+      font-size:22px;
+      color:#cbd5e1;
+      margin-bottom:25px;
+    }
+
+    .clock{
+      font-size:64px;
+      font-weight:bold;
+      color:#00ffff;
+      text-shadow:
+        0 0 10px #00ffff,
+        0 0 20px #00ffff,
+        0 0 40px #00ffff;
+    }
+
+    .bg{
+      position:absolute;
+      width:100%;
+      height:100%;
+      background:
+      radial-gradient(circle at top left,#1e3a8a,transparent),
+      radial-gradient(circle at bottom right,#06b6d4,transparent);
+      filter:blur(100px);
+      z-index:-1;
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg"></div>
+
+<div class="card">
+
+  <div class="title">
+    <span class="flag">🇰🇬</span>
+    Часы Кыргызстана
+  </div>
+
+  <div class="city">
+    Бишкек
+  </div>
+
+  <div class="clock" id="clock">
+    00:00:00
+  </div>
+
+</div>
+
+<script>
+  function updateClock(){
+
+    const now = new Date();
+
+    const options = {
+      timeZone: 'Asia/Bishkek',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    };
+
+    const time = now.toLocaleTimeString('ru-RU', options);
+
+    document.getElementById("clock").innerHTML = time;
+  }
+
+  setInterval(updateClock, 1000);
+  updateClock();
+</script>
+
+</body>
+</html>
